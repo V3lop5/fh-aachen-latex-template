@@ -32,23 +32,30 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Run latexmk
-        uses: xu-cheng/latex-action@1.1.0
+        uses: xu-cheng/latex-action@v2
         with:
           root_file: master.tex
 
-      - name: Get Time
-        id: time
+      - name: Get current date
+        id: date
         uses: nanzm/get-time-action@v1.1
         with:
           timeZone: 1
           format: 'YYYY-MM-DD'
+        
+      - name: Get current time
+        id: time
+        uses: nanzm/get-time-action@v1.1
+        with:
+          timeZone: 1
+          format: 'HH:mm'
           
       - name: Upload master.pdf as release
         uses: svenstaro/upload-release-action@v2
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           file: master.pdf
-          asset_name: "${{ steps.time.outputs.time }}_${{ github.event.repository.name }}.pdf"
+          asset_name: "${{ steps.date.outputs.time }}_${{ github.event.repository.name }}.pdf"
           tag: ${{ steps.time.outputs.time }}
           overwrite: true
-          body: "Generated master.pdf @ ${{ steps.time.outputs.time }}."
+          body: "Generated master.pdf @ ${{ steps.date.outputs.time }}. Last updated ${{ steps.time.outputs.time }}"
