@@ -43,7 +43,7 @@ jobs:
           timeZone: 1
           format: 'YYYY-MM-DD'
           
-      - name: Upload pdf to release
+      - name: Upload master.pdf as release
         uses: svenstaro/upload-release-action@v2
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
@@ -51,4 +51,4 @@ jobs:
           asset_name: "${{ steps.time.outputs.time }}_${{ github.event.repository.name }}.pdf"
           tag: ${{ steps.time.outputs.time }}
           overwrite: true
-          body: "Generated master.pdf from ${{ steps.time.outputs.time }}. PDF generated on commit ${GITHUB_SHA::8}"
+          body: "Generated master.pdf @ ${{ steps.time.outputs.time }}."
