@@ -56,7 +56,7 @@ jobs:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           file: master.pdf
           asset_name: "${{ steps.date.outputs.time }}_${{ github.event.repository.name }}.pdf"
-          tag: ${{ steps.date.outputs.time }}
+          tag: ${{ github.ref }}
           release_name: "Release ${{ steps.date.outputs.time }} at ${{ steps.time.outputs.time }}"
           overwrite: true
-          body: "Generated master.pdf @ ${{ steps.date.outputs.time }}. This Release will always contain the latest build"
+          body: "Generated master.pdf @ ${{ steps.date.outputs.time }} ${{ steps.time.outputs.time }}."
