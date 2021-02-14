@@ -1,0 +1,140 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Style
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\geometry{includehead,includefoot,top=25mm,bottom=25mm, footskip=12mm}
+
+
+% Programmiersprache Kotlin
+% Farben: https://www.namsu.de/Extra/pakete/Xcolor.html
+% Über listings: http://texdoc.net/texmf-dist/doc/latex/listings/listings.pdf
+\lstdefinelanguage{Kotlin}{
+  basicstyle={\small\ttfamily}, 
+  lineskip=2px,
+  comment=[l]{//},
+  commentstyle={\color{gray}},
+  emph={delegate, filter, first, firstOrNull, forEach, lazy, map, mapNotNull, println, return@},
+  emphstyle={\color{OrangeRed}},
+  identifierstyle=\color{black},
+  keywords={abstract, actual, as, as?, break, by, class, companion, continue, data, do, dynamic, else, enum, expect, false, final, for, fun, get, if, import, in, interface, internal, is, null, object, override, package, private, public, return, set, super, suspend, this, throw, true, try, typealias, val, var, vararg, when, where, while, inline, reified},
+  keywordstyle={\color{NavyBlue}\bfseries},
+  morecomment=[s]{/*}{*/},
+  morestring=[b]",
+  morestring=[s]{"""*}{*"""},
+  ndkeywords={@Deprecated, @JvmField, @JvmName, @JvmOverloads, @JvmStatic, @JvmSynthetic, Array, Byte, Double, Float, Int, Integer, Iterable, Long, Runnable, Short, String, Any, @RestController, @GetMapping, @RequestParam, @RequestMapping, @FeignClient, @Transactional, @ResponseBody},
+  ndkeywordstyle={\color{Maroon}\bfseries},
+  sensitive=true,
+  stringstyle={\color{ForestGreen}},
+} % TODO Useless? 
+% \newminted{kotlin}{
+%     breakbytoken,
+%     breaklines,
+%     autogobble,
+%     frame=lines,
+%     label=Kotlin,
+%     framesep=2\fboxsep
+% }
+
+
+% YAML
+% here is a macro expanding to the name of the language
+% (handy if you decide to change it further down the road)
+\newcommand\language@yaml{yaml}
+
+\expandafter\expandafter\expandafter\lstdefinelanguage
+\expandafter{\language@yaml}
+{
+  basicstyle={\small\ttfamily}, 
+  keywords={true,false,null,y,n},
+  keywordstyle=\color{darkgray}\bfseries,
+  basicstyle=\color{RoyalBlue},                                 % assuming a key comes first
+  sensitive=false,
+  comment=[l]{\#},
+  morecomment=[s]{/*}{*/},
+  commentstyle=\color{purple}\ttfamily,
+  stringstyle= \color{black}\ttfamily,
+  moredelim=[l][\color{orange}]{\&},
+  moredelim=[l][\color{magenta}]{*},
+  moredelim=**[il][\color{red}{:}\color{black}]{:},   % switch to value style at :
+  morestring=[b]',
+  morestring=[b]",
+  literate =    {---}{{\ProcessThreeDashes}}3
+                {>}{{\textcolor{red}\textgreater}}1     
+                {|}{{\textcolor{red}\textbar}}1 
+                {\ -\ }{{\mdseries\ -\ }}3,
+}
+
+
+
+% Layout der Seiten
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+\pagestyle{fancyplain}
+
+
+\lhead[\fancyplain{}{\bfseries \small{\thepage}}]%
+      {\fancyplain{}{\bfseries \small{\leftmark}}}
+\rhead[\fancyplain{}{\bfseries \small{\ArbeitKopfzeile}}]%
+      {\fancyplain{}{\bfseries \small{\thepage}}}
+\lfoot[\fancyplain{}{}]%
+      {\fancyplain{}{\bfseries \small{\Autor}}}
+\rfoot[\fancyplain{}{\bfseries \small{\ArbeitThema}}]%
+      {\fancyplain{}{}}
+\cfoot{}
+
+\setlength{\textwidth}{15cm}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{10pt}
+\renewcommand{\headrulewidth}{0.2pt}
+\renewcommand{\footrulewidth}{0.2pt}
+
+\setlength{\evensidemargin}{0.5cm}
+\setlength{\oddsidemargin}{0.5cm}
+
+\newcommand{\Ginclude}[1]{\include{#1}\cleardoublepage}
+
+
+%%% Kapitelüberschriften
+\renewcommand\raggedchapter{\raggedleft}
+\renewcommand*{\chapterformat}{{%
+\scalebox{4}{\selectfont\textcolor{lightgray}\thechapter}}}
+
+\makeatletter
+\renewcommand\chapterlinesformat[3]{%
+  \Ifstr{#1}{chapter}
+    {
+      \parbox[t]{\textwidth}{\hfill{  {#2} }}%
+      \newline
+      \parbox[t]{\textwidth}{\raggedchapter#3}%
+      \par\nobreak
+    }%
+    {\@hangfrom{#2}{#3}}% original definition for other commands with style=chapter
+}
+\makeatother
+
+
+%%%% Abschnittsüberschriften
+\renewcommand\sectionformat{%
+\textcolor{lightgray}{\thesection}\hspace*{10pt}%
+}
+
+\renewcommand\subsectionformat{%
+\textcolor{lightgray}{\thesubsection}\hspace*{10pt}%
+}
+
+
+%%% Abstand vor und nach Kapiteln
+\RedeclareSectionCommand[
+  beforeskip=0cm]{chapter}
+
+    
+\RedeclareSectionCommand[
+  afterskip=.05\baselineskip]{section}
+
+\RedeclareSectionCommand[
+  beforeskip=.8\baselineskip, afterskip=.05\baselineskip]{subsection}
+
+      
+\RedeclareSectionCommand[
+  beforeskip=.6\baselineskip, afterskip=.01\baselineskip]{subsubsection}

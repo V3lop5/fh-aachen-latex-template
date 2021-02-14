@@ -1,0 +1,46 @@
+
+\chapter*{Eigenständigkeitserklärung}
+Diese Arbeit ist von mir selbstständig angefertigt und verfasst. Es sind keine anderen als die angegebenen Quellen und Hilfsmittel benutzt worden.
+\vspace{2cm}
+
+\begin{tabularx}{\textwidth}{XX}
+  {Hürth, den \today} & \\
+  \cline{1-2}\\[-0.3cm]
+  \footnotesize{Ort, Datum}& \footnotesize{Unterschrift}\\
+\end{tabularx}
+
+\ifthenelse{\equal{\printSignatureJPG}{1}}
+{
+% Unterschrift JPG ausgeben
+\begin{picture}(50,50)
+  % 70 wäre ziemlich genau auf der Linie
+  \put(200, 80){\hbox{\includegraphics[scale=1]{attachments/images/Signature.jpg}}}
+\end{picture}
+}
+{
+% Keine Unterschrift ausgeben
+\vspace{3cm}
+}
+
+\vspace{1cm}
+
+\begingroup
+  \let\clearpage\relax
+  \chapter*{Sperrvermerk}
+\endgroup
+Die vorliegende Arbeit mit dem Titel
+\begin{center}
+  \textbf{\ArbeitTitelseite} 
+\end{center}
+beinhaltet Informationen über betriebsbezogene Prozesse sowie vertrauliche Daten des Unternehmens. Sie darf nicht ohne ausdrückliche Genehmigung der
+\begin{center}
+  rhenag Rheinische Energie\\
+  Aktiengesellschaft\\
+  Bayenthalgürtel 9\\
+  50968 Köln\\
+\end{center}
+veröffentlicht oder Dritten zugänglich gemacht werden.
+
+
+
+\cleardoublepage

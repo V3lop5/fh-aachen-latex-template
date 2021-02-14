@@ -1,0 +1,76 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Packages (& Configuration)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage[dvipsnames]{xcolor} % Farben
+\usepackage{listings,listings-ext} % Quellcode nicht notwendig?
+% \usepackage{minted} % Quellcode
+\usepackage[utf8]{inputenc} % UTF-8 Input für Texte & co
+\usepackage[ngerman]{babel} % Sprache deutsch
+
+\usepackage{geometry} % Layout Gemoetriegeschichten
+
+\usepackage{fancyhdr} % Schönes Layout
+\usepackage{expdlist} % Verbessert descriptions
+\usepackage{tabularx} % Tabellen
+\usepackage[export]{adjustbox} % loads also graphicx
+\usepackage[section]{placeins} % Floating
+\usepackage{subfig} % Mehrere Figuren in einer Abbildung
+\usepackage[all]{nowidow} % Better formatting 
+
+\usepackage{chngcntr} % Fußnoten komplett hochzählen und nicht nur in Kapiteln
+\counterwithout{footnote}{chapter}
+% \setlength{\skip\footins}{Länge}
+
+\usepackage{acro} % Abkürzungsverzeichnis
+\acsetup{
+  make-links = true,
+  list/template = tabular % TODO prüfen und ggf rausnehmen. Dann sind ACRO wieder wild
+}
+
+% Notizen (zum Deaktivieren [disable])
+\usepackage[textwidth=25mm,textsize=footnotesize]{todonotes}
+\setlength\marginparwidth{1in}
+
+% Schriftart
+\usepackage{charter}
+
+% Verlinkungen
+\usepackage[
+  breaklinks=false,
+  linktocpage=false,
+  linkcolor=black,
+  citecolor=magenta,
+  colorlinks=true,
+  urlcolor=black
+  ]{hyperref}
+
+\usepackage[german]{fancyref}
+
+% Glossar
+\usepackage[makeindex,toc,automake]{glossaries-extra}
+\glstocfalse % Disable section in TOC
+
+% Quellen
+\usepackage[
+  backend   = biber,
+  style     = numeric,
+  sorting   = none,
+  backref   = true
+]{biblatex}
+\DefineBibliographyStrings{german}{
+  backrefpage = {referenziert auf Seite},
+  backrefpages = {referenziert auf den Seiten},
+  urlseen = {abgerufen am}
+}
+\DeclareFieldFormat{urldate}{\bibstring{urlseen}\space#1}
+\setcounter{biburllcpenalty}{7000}
+\setcounter{biburlucpenalty}{8000}
+
+% Warnungen verhindern
+% \usepackage{scrhack} % Verhindert scrreprt Warnungen
+
+% Zitation
+\usepackage{csquotes}

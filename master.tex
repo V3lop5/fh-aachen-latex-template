@@ -1,0 +1,49 @@
+% !TeX root = ./master.tex
+
+\documentclass[a4paper,11pt,twoside,openright]{scrreprt}
+
+% Include everything from Package
+\usepackage{configuration/Packages}
+\usepackage{configuration/Constants}
+\usepackage{configuration/Style}
+\usepackage{configuration/Commands}
+
+% Include Bib, acronyms, glossary
+\addbibresource{content/references.bib}
+\include{content/Acronyms}
+\include{content/Glossary}
+
+
+\begin{document}
+
+% Prefix
+\include{content/prefix/00-TitlePage}
+\include{content/prefix/01-Erklaerung}
+
+\pagenumbering{Roman} 
+\include{content/prefix/02-Abstract}
+\include{content/prefix/03-Contents}
+
+
+\setcounter{page}{0}
+\pagenumbering{arabic}
+
+% Chapters
+\include{content/chapters/01-Introduction}
+\include{content/chapters/02-Example}
+\include{content/chapters/03-Conclusion}
+% INSERT more chapters here
+
+
+% Clear Page + null rein oder raus - damit die letzte Seite bündig ist.
+\clearpage
+\null
+\clearpage
+\appendix
+ 
+% INSERT Appendix here
+
+\chapter{Quellenverzeichnis}
+\printbibliography[heading=none]
+
+\end{document}
