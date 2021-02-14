@@ -35,7 +35,7 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Run latexmk
-        uses: xu-cheng/latex-action@v2
+        uses: v3lop5/latex-action@thin
         with:
           root_file: master.tex
 
