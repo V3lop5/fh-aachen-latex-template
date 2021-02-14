@@ -56,6 +56,6 @@ jobs:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           file: master.pdf
           asset_name: "${{ steps.date.outputs.time }}_${{ github.event.repository.name }}.pdf"
-          tag: ${{ steps.time.outputs.time }}
+          tag: ${{ steps.date.outputs.time }}
           overwrite: true
           body: "Generated master.pdf @ ${{ steps.date.outputs.time }}. Last updated ${{ steps.time.outputs.time }}"
