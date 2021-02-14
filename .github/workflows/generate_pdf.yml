@@ -45,13 +45,6 @@ jobs:
         with:
           timeZone: 1
           format: 'YYYY-MM-DD'
-        
-      - name: Get current time
-        id: time
-        uses: nanzm/get-time-action@v1.1
-        with:
-          timeZone: 1
-          format: 'HH:mm'
           
       - name: Upload master.pdf as release
         uses: svenstaro/upload-release-action@v2
@@ -59,7 +52,7 @@ jobs:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           file: master.pdf
           asset_name: "${{ steps.date.outputs.time }}_${{ github.event.repository.name }}.pdf"
-          tag: ${{ github.ref }}
-          release_name: "Release ${{ steps.date.outputs.time }} at ${{ steps.time.outputs.time }}"
+          tag: ${{ steps.date.outputs.time }}
+          release_name: "Release ${{ steps.date.outputs.time }}"
           overwrite: true
-          body: "Generated master.pdf @ ${{ steps.date.outputs.time }} ${{ steps.time.outputs.time }}."
+          body: "Generated master.pdf on ${{ steps.date.outputs.time }}. Will contain the latest version of this day. I'm pretty sure"
