@@ -41,7 +41,7 @@ jobs:
         uses: nanzm/get-time-action@v1.1
         with:
           timeZone: 1
-          format: 'YYYY-MM-DD-HH-mm-ss'
+          format: 'YYYY-MM-DD'
 
       # Create Release and publish PDF
       - name: Create Release
@@ -65,3 +65,13 @@ jobs:
           asset_path: ./master.pdf
           asset_name: "${{ github.event.repository.name }} ${{ steps.time.outputs.time }}.pdf"
           asset_content_type: application/pdf
+          
+      - name: Upload pdf to release
+        uses: svenstaro/upload-release-action@v2
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: master.pdf
+          asset_name: "${{ steps.time.outputs.time }}_${{ github.event.repository.name }}.pdf"
+          tag: ${{ steps.time.outputs.time }}
+          overwrite: true
+          body: "Generated master.pdf from ${{ steps.time.outputs.time }}. PDF generated on commit ${GITHUB_SHA::8}"
