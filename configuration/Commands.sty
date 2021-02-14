@@ -73,7 +73,7 @@
       \label{lst:#1}
     \end{figure}
   }
-} % Beispiel: \kotlinfile{Example.kt}{Beispiel Code für xyz}
+} % Beispiel: \yamlfile{Example.yaml}{Beispiel YAML für xyz}
 
 \newcommand{\textfile}[2]{
   \ifthenelse{\equal{\textOnly}{1}}
@@ -97,37 +97,37 @@
       \label{lst:#1}
     \end{figure}
   }
-} % Beispiel: \image{Funny.PNG}{Dies ist eine Beschreibung}{Funny}
+} % Beispiel: \textfile{Text.txt}{Dies ist eine Beschreibung}
 
 
-\newcommand{\image}[3]{
+\newcommand{\image}[2]{
   \ifthenelse{\equal{\textOnly}{1}}
   { 
-    [image here, remove \textbackslash{}textOnly] \label{image:#3}
+    [image here, remove \textbackslash{}textOnly] \label{image:#1}
   }{
     \begin{figure}[!htp]
       \centering
       \includegraphics[max height=19cm,max width=0.9\textwidth,keepaspectratio]{attachments/images/#1}
       \caption{#2}
-      \label{image:#3}
+      \label{image:#1}
     \end{figure}
   }
-} % Beispiel: \image{Funny.PNG}{Dies ist eine Beschreibung}{Funny}
+} % Beispiel: \image{Funny.PNG}{Dies ist eine Beschreibung}
 
 
-\newcommand{\imagebig}[3]{
+\newcommand{\imagebig}[2]{
   \ifthenelse{\equal{\textOnly}{1}}
   { 
-    [big image here, remove \textbackslash{}textOnly] \label{image:#3}
+    [big image here, remove \textbackslash{}textOnly] \label{image:#1}
   }{
     \begin{figure}[!htp]
       \centering
       \includegraphics[max height=19cm,max width=\textwidth,keepaspectratio]{attachments/images/#1}
       \caption{#2}
-      \label{image:#3}
+      \label{image:#1}
     \end{figure}
   }
-} % Beispiel: \imagebig{Funny.PNG}{Dies ist eine Beschreibung}{Funny}
+} % Beispiel: \imagebig{Funny.PNG}{Dies ist eine Beschreibung}
 
 \newcommand{\imagescale}[3]{
   \ifthenelse{\equal{\textOnly}{1}}
@@ -141,42 +141,42 @@
       \label{image:#1}
     \end{figure}
   }
-} % Beispiel: \image{Funny.PNG}{Dies ist eine Beschreibung}{Funny}
+} % Beispiel: \image{Funny.PNG}{Dies ist eine Beschreibung}{1.5}
 
-\newcommand{\imagedesc}[4]{
+\newcommand{\imagedesc}[3]{
   \ifthenelse{\equal{\textOnly}{1}}
   { 
-    [image with desc here, remove \textbackslash{}textOnly] \label{image:#3}
+    [image with desc here, remove \textbackslash{}textOnly] \label{image:#1}
   }{
     \begin{figure}[!htp]
       \centering
       \includegraphics[max height=19cm,max width=0.9\textwidth,keepaspectratio]{attachments/images/#1}\\
-      #4
+      #3
       \caption{#2}
-      \label{image:#3}
+      \label{image:#1}
     \end{figure}
   }
-} % Beispiel: \imagedesc{Funny.PNG}{Dies ist eine Beschreibung}{Funny}{Zusätzliche Beschreibung}
+} % Beispiel: \imagedesc{Funny.PNG}{Dies ist eine Beschreibung}{Zusätzliche Beschreibung}
 
 
-\newcommand{\imagedescscale}[5]{
+\newcommand{\imagedescscale}[4]{
   \ifthenelse{\equal{\textOnly}{1}}
   { 
     [scaled image with desc here, remove \textbackslash{}textOnly] \label{image:#3}
   }{
     \begin{figure}[!htp]
       \centering
-      \includegraphics[max height=19cm,max width=0.9\textwidth,keepaspectratio, scale=#5]{attachments/images/#1}\\
-      #4
+      \includegraphics[max height=19cm,max width=0.9\textwidth,keepaspectratio, scale=#4]{attachments/images/#1}\\
+      #3
       \caption{#2}
-      \label{image:#3}
+      \label{image:#1}
     \end{figure}
   }
-} % Beispiel: \imagedesc{Funny.PNG}{Dies ist eine Beschreibung}{Funny}{Zusätzliche Beschreibung}{0.9}
+} % Beispiel: \imagedesc{Funny.PNG}{Dies ist eine Beschreibung}{Zusätzliche Beschreibung}{0.9}
 
 \newcommand{\code}[1]{\texttt{#1}} % Beispiel: \code{Funny yoo}
 
 
 \newcommand*{\labelref}[1]{\hyperref[{#1}]{\autoref*{#1}}}
 \newcommand*{\imageref}[1]{\hyperref[{image:#1}]{\autoref*{image:#1}}}
-\newcommand*{\coderef}[1]{\hyperref[{lst:#1}]{\autoref*{image:#1}}}
+\newcommand*{\coderef}[1]{\hyperref[{lst:#1}]{\autoref*{lst:#1}}}

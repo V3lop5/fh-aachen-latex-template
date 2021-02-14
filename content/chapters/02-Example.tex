@@ -4,10 +4,28 @@
 Notes are helpful! \todo{Finish this and that!} Simple cite example \cite{github} or a cite with some extra info \cite[S. 1]{github}.
 
 \section{Image Examples}
+To use the \kotlin{\\image} command please put the image directly in \kotlin{attachments/images/}. 
+
+The README file (\imageref{example/README.png}) contains many helpful things. The Images are printed with 90 percent width.
+
+\image{example/README.png}{Screenshot of README file}
+\FloatBarrier 
+
+For Large Images you can use \kotlin{\\imagebig} command.
+\imagebig{example/Code.png}{Screenshot of code section}
+\FloatBarrier 
+
+If you want an extra description you can use \kotlin{\\imagedesc}.
+\imagedesc{example/Release.png}{Screenshot of Releases}{This is my extra description \cite{github}}
+\FloatBarrier 
+
+By default images are placed somewhere. To force a Position, simply use \kotlin{\\FloatBarrier} after the \kotlin{\\image} command.
+
+
 \todo{Insert examples}
 
 \section{Code Examples}
-This Section contains Kotlin Code Examples. 
+This Section contains Code Examples. It uses the Minted Package \cite{minted}.
 
 \subsection{Code from File}
 You can insert code from a file. The following code was inserted by File:
