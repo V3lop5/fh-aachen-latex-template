@@ -27,6 +27,9 @@ jobs:
    
   generate:
     runs-on: ubuntu-latest
+    
+    # If build doesn't succed in 10 minutes there must be something wrong. I guess.
+    timeout-minutes: 10
 
     steps:
       - uses: actions/checkout@v2
